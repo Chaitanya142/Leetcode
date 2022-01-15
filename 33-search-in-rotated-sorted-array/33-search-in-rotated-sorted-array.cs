@@ -6,7 +6,7 @@ public class Solution
         int lo = 0, hi = nums.Length - 1;
         while (lo <= hi)
         {
-            int mid = (lo + hi) >> 1;
+            int mid = (lo + hi)/2;
             if (nums[mid] == tar) return mid;
             if (nums[lo] <= nums[mid])
             {
