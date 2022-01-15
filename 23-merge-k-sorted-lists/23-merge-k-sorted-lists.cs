@@ -10,6 +10,7 @@
  * }
  */
 
+
 public class Solution
 {
     public ListNode MergeKLists(ListNode[] lists)
@@ -29,6 +30,7 @@ public class Solution
             ListNode currentNode = null;
             //int lastMinVal = Int32.MaxValue;
             int len = lists.Length;
+
             ListNode minNode = getLeastNode(currentElementOfList, ref len);
             if (minNode != null)
             {
@@ -60,20 +62,43 @@ public class Solution
     {
         ListNode minNode = null;
         int lastMinVal = Int32.MaxValue;
-
         int listNo = 0;
+        int nullList = -1;
         for (int i = 0; i < length; i++)
         {
-            if (currentElementList[i] != null &&
-                currentElementList[i].val <= lastMinVal)
+            if (currentElementList[i] != null)
             {
-                lastMinVal = currentElementList[i].val;
-                minNode = currentElementList[i];
-                listNo = i;
+                if (currentElementList[i].val <= lastMinVal)
+                {
+                    lastMinVal = currentElementList[i].val;
+                    minNode = currentElementList[i];
+                    listNo = i;
+                }
+            }
+            else
+            {
+                nullList = i;
             }
         }
+
         if (minNode != null)
+        {
             currentElementList[listNo] = currentElementList[listNo].next;
+            if (nullList > -1)
+            {
+                swapList(currentElementList, nullList, length - 1);
+                length--;
+            }
+        }
+
+
         return minNode;
+    }
+
+    public void swapList(ListNode[] currentElementList, int i, int j)
+    {
+        ListNode temp = currentElementList[i];
+        currentElementList[i] = currentElementList[j];
+        currentElementList[j] = temp;
     }
 }
