@@ -18,10 +18,10 @@ public class Solution {
         {
             for (int i = start; i < nums.Length; i++)
             {
-                var newList = new List<int>(tempList);
-                newList.Add(nums[i]);
-                backtrack(list, newList, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
-                newList.Remove(newList.Count() - 1);
+                //var newList = new List<int>(tempList);
+                tempList.Add(nums[i]);
+                backtrack(list, tempList, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
+                tempList.RemoveAt(tempList.Count() - 1);
             }
         }
     }
