@@ -31,6 +31,7 @@ public class Solution
     public string getChars(string s)
     {
 
+        /*
         int[] arr = new int[26];
         int aChar = (int)'a';
 
@@ -39,5 +40,9 @@ public class Solution
             arr[(int)c - aChar]++;
         }
         return string.Join(",", arr);
+        */
+        var chars = s.ToArray();
+        Array.Sort(chars);
+        return new string(chars);
     }
 }
