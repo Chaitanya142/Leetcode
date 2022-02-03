@@ -1,20 +1,22 @@
-//DP
+//Kanade
 public class Solution {
- public int MaxSubArray(int[] nums)
-    {
-        int[] storage = new int[nums.Length];
-        int max = nums[0];
-        storage[0] = nums[0];
-        for (int i = 1; i < nums.Length; i++)
+    public int MaxSubArray(int[] nums) {
+        
+        int max = int.MinValue, sum = 0;
+
+        foreach(var no in nums)
         {
-            storage[i] = Math.Max(storage[i - 1] + nums[i], nums[i]);
-            if (storage[i] > max)
-            {
-                max = storage[i];
-            }
+            sum += no;
+            max = Math.Max(sum, max);
+            if(sum<0)sum=0;
         }
+
         return max;
+    
     }
+    
+    
+    
 }
 
 
