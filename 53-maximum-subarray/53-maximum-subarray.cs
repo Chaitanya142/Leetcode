@@ -3,9 +3,9 @@ public class Solution {
         
         int max = int.MinValue, sum = 0;
 
-        for (int i = 0; i < nums.Length; i++)
+        foreach(var no in nums)
         {
-            sum += nums[i];
+            sum += no;
             max = Math.Max(sum, max);
             sum = sum < 0 ? 0 : sum;
         }
