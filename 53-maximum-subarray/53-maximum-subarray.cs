@@ -1,3 +1,4 @@
+//Kanade
 public class Solution {
     public int MaxSubArray(int[] nums) {
         
@@ -7,7 +8,7 @@ public class Solution {
         {
             sum += no;
             max = Math.Max(sum, max);
-            sum = sum < 0 ? 0 : sum;
+            if(sum<0)sum=0;
         }
 
         return max;
